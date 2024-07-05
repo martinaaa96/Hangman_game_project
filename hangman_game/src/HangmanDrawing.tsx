@@ -10,12 +10,25 @@ const HEAD = (
 
     }}/>
 )
+const BODY = (
+    <div style ={{
+        width: "10px",
+        height: "100px",
+       
+        border: "10px sold black",
+        position: "absolute",
+        top:"50px",
+        right:"-25px",
+
+    }}/>
+)
 
 export function HangmanDrawing(){
 
     return <div style= {{
         position:"relative" }}>
             {HEAD}
+            {BODY}
             <div style={{
                 height: "50px",
                 width: "10px",
