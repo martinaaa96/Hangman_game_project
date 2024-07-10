@@ -30,10 +30,13 @@ console.log(wordToGuess)
       <div style={{ fontSize: "2rem" , textAlign: "center", }}>
         Lose 
         Win
-      </div>
+    </div>
       <HangmanDrawing/>
       <HangmanWord/>
+      <div style ={{ alignSelf: "stretch"}}>
       <Keyboard/>
+    
+      </div>
       </div>
     </>
   )
