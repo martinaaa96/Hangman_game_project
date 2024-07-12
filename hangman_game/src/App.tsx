@@ -35,7 +35,7 @@ return ()=>{
   document.removeEventListener('keypress', handler)
 }
 
- },[guessedLetters]);
+ },[addGuessedLetter]);
 
   return (
     <>
