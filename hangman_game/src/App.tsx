@@ -12,7 +12,12 @@ function App() {
  const[guessedLetters, setGuestedLetters] = useState<string[]>([])
 
  const incorrectLetters = guessedLetters.filter(letter => !wordToGuess.includes(letter))
-const addGuessedLetter = useCallback((letter:string) =>{
+
+ const isLoser = incorrectLetters.length >= 6
+const isWinner = wordToGuess.split("").every(letter =>guessedLetters.includes(letter))
+
+ const addGuessedLetter = useCallback(
+  (letter:string) =>{
   if(guessedLetters.includes(letter)) return
 
  setGuestedLetters(currentLetters => [... currentLetters, letter]);
@@ -52,15 +57,17 @@ return ()=>{
 
       
       <div style={{ fontSize: "2rem" , textAlign: "center", }}>
-        Lose 
-        Win
+      {isWinner && "Winner! - Refresh to try again"}
+      {isLoser && "Nice Try - Refresh to try again"} 
     </div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length}/>
       <HangmanWord guessedLetters = {guessedLetters} wordToGuess = {wordToGuess}/>
       <div style ={{ alignSelf: "stretch"}}>
-      <Keyboard activeLetters ={guessedLetters.filter(letter=>wordToGuess.includes(letter))}/>
-    inactiveLetters = {incorrectLetters}
-    addGuessedLetter = {addGuessedLetter}
+      <Keyboard 
+      disabled = {isWinner || isLoser}
+      activeLetters={guessedLetters.filter(letter=>wordToGuess.includes(letter))}
+    inactiveLetters = {incorrectLetters} 
+    addGuessedLetter = {addGuessedLetter} />
       </div>
       </div>
     </>
