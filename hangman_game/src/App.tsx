@@ -9,7 +9,7 @@ function getWord(){
 }
 function App() {
  const [wordToGuess, setWordToGuess] = useState(getWord);
- 
+
 
  const[guessedLetters, setGuestedLetters] = useState<string[]>([])
 
@@ -48,7 +48,7 @@ useEffect(() => {
     if (key !== "Enter") return
 
     e.preventDefault()
-    setGuessedLetters([])
+    setGuestedLetters([])
     setWordToGuess(getWord())
   }
 
